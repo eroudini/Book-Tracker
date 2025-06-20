@@ -1,0 +1,7 @@
+{
+  "name": "myBookTracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
