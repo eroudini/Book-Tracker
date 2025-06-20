@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Statistiques</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Statistiques</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Votre Objectif</ion-card-title>
+      <ion-item lines="none">
+        <ion-label>{{ weeklyGoalMinutes / 60 }}h de lecture / semaine</ion-label>
+        <ion-button fill="clear" slot="end"><ion-icon slot="icon-only" name="create-outline"></ion-icon></ion-button>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content><ion-progress-bar color="primary" [value]="weeklyProgress$ | async"></ion-progress-bar></ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header><ion-card-title>Calendrier</ion-card-title></ion-card-header>
+    <ion-card-content>
+      <div class="calendar-week">
+        <div *ngFor="let day of calendarDays" class="calendar-day">
+          <span class="day-name">{{ day.dayName }}</span>
+          <span class="day-number">{{ day.dayNumber }}</span>
+          <span class="day-dot" [class.read]="readingSessionMap.has(day.dateString)"></span>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="day-dot"></span> Pas de lecture
+        <span class="day-dot read"></span> Séance terminée
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header><ion-card-title>Cette année...</ion-card-title></ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" *ngFor="let stat of statsThisYear" class="stat-item">
+            <ion-icon [name]="stat.icon" color="medium"></ion-icon>
+            <ion-label>
+              <h2>{{ stat.value | async }}</h2>
+              <p>{{ stat.label }}</p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

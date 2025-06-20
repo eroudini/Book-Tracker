@@ -1,0 +1,19 @@
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 8px;
+}
+.book-card {
+  flex: 0 0 140px; 
+  margin-right: 10px;
+}
+.empty-state {
+    color: var(--ion-color-medium);
+    padding: 20px;
+}
+
+.placeholder-icon {
+  font-size: 40px;
+  color: var(--ion-color-medium);
+  padding: 8px;
+}

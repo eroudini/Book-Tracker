@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rechercher un livre</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Fermer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar 
+      placeholder="Titre, auteur..." 
+      (ionInput)="onSearchChange($event)" 
+      [debounce]="500">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-padding" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+  </div>
+  
+  <ion-list *ngIf="!isLoading">
+    <ion-item *ngFor="let book of searchResults" button (click)="selectBook(book)">
+      <ion-thumbnail slot="start">
+        <img [src]="book.cover_i ? 'https://covers.openlibrary.org/b/id/' + book.cover_i + '-S.jpg' : 'assets/placeholder.png'" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ book.title }}</h2>
+        <p>{{ book.author_name?.join(', ') }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,42 @@
+.upgrade-banner {
+  background: linear-gradient(45deg, var(--ion-color-primary), var(--ion-color-secondary));
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+  color: var(--ion-color-primary-contrast);
+
+  h3 {
+    margin-top: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  p {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  .unlock-button {
+    --background: var(--ion-color-dark, #222428);
+    --background-activated: var(--ion-color-dark-shade, #1e2023);
+    --color: var(--ion-color-light, #f4f5f8);
+    --box-shadow: none;
+    margin-top: 16px;
+    height: 48px;
+    font-weight: bold;
+  }
+}
+
+// Pour le mode clair, on peut ajuster la couleur du bouton "Unlock"
+// pour qu'il soit bien visible.
+body:not(.dark) .unlock-button {
+    --background: #111; // Un noir un peu moins intense
+    --color: #fff;
+}
+
+// Assure que le fond de la liste est transparent pour laisser voir 
+// la couleur de fond de la page, ce qui est plus joli avec les listes "inset".
+ion-list {
+    background: transparent;
+}

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="dismiss()" (keydown)="dismiss()">
+        Annuler
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Ajouter un livre</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveBook()" (keydown)="saveBook()" [strong]="true">Enregistrer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="bookForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Titre</ion-label>
+        <ion-input formControlName="title" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Auteur</ion-label>
+        <ion-input formControlName="author" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Statut</ion-label>
+        <ion-select formControlName="status" interface="popover">
+          <ion-select-option *ngFor="let s of statuses" [value]="s">{{ s }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+       <ion-item>
+        <ion-label position="stacked">URL de la couverture (optionnel)</ion-label>
+        <ion-input formControlName="cover" type="url"></ion-input>
+      </ion-item>
+      </ion-list>
+  </form>
+
+   <ion-button (click)="scanBarcode()" (keydown)="scanBarcode()" expand="block" fill="outline" class="ion-margin-top">
+    <ion-icon slot="start" name="barcode-outline"></ion-icon>
+    Scanner le code-barres
+  </ion-button> -
+</ion-content>

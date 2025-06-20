@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Paramètres</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Paramètres</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <div class="upgrade-banner">
+      <h3>UPGRADE TO PRO</h3>
+      <p>for exclusive features</p>
+      <ion-button expand="block" shape="round" class="unlock-button" (click)="unlockPro()">
+        Unlock
+        <ion-icon slot="end" name="lock-closed"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-list [inset]="true">
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Préférences</ion-label>
+      </ion-item-divider>
+      
+      <ion-item>
+        <ion-icon name="moon-outline" slot="start" color="secondary"></ion-icon>
+        <ion-label>Thème sombre</ion-label>
+        <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleChange($event)"></ion-toggle>
+      </ion-item>
+
+      <ion-item button="true" detail="true" (click)="changeGoal()">
+          <ion-icon name="flag-outline" slot="start" color="tertiary"></ion-icon>
+          <ion-label>Objectif hebdomadaire</ion-label>
+          <ion-note slot="end">{{ weeklyGoalHours }} heures</ion-note>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>À Propos & Support</ion-label>
+      </ion-item-divider>
+
+      <ion-item button="true" detail="true" (click)="rateApp()">
+        <ion-icon name="star-outline" slot="start"></ion-icon>
+        <ion-label>Noter l'application</ion-label>
+      </ion-item>
+
+      <ion-item button="true" detail="true" (click)="shareApp()">
+        <ion-icon name="share-outline" slot="start"></ion-icon>
+        <ion-label>Partager l'application</ion-label>
+      </ion-item>
+
+      <ion-item button="true" detail="true" (click)="contactUs()">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label>Contact</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider><ion-label>Données</ion-label></ion-item-divider>
+      <ion-item button="true" (click)="confirmDeleteAllData()">
+        <ion-icon name="trash-outline" color="danger" slot="start"></ion-icon>
+        <ion-label color="danger">Réinitialiser l'application</ion-label>
+      </ion-item>
+    </ion-item-group>
+
+  </ion-list>
+</ion-content>
